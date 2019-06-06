@@ -7,8 +7,13 @@ public class PaddleCtrl : MonoBehaviour
     public float speed;
     public float rightScreenEdge;
     public float leftScreenEdge;
+    public GameManager gm;
     void Update ()
     {
+        if (gm.gameOver)
+        {
+            return;
+        }
         float horizontal = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * speed);

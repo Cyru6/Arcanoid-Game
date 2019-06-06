@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     public bool inPlay;
     public Transform paddle;
     public float speed;
+    public GameManager gm;
 
     void Start()
     {
@@ -18,13 +19,16 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
+        if (gm.gameOver)
+        {
+            return;
+        }
         if (!inPlay)
         {
             transform.position = paddle.position;
         }
-        if (Input.GetButtonDown ("Jump"))
+        if (Input.GetButtonDown ("Jump") && !inPlay)
         {
-            print("Hello");
             inPlay = true;
             rb.AddForce(Vector2.up * speed);
         }
@@ -36,6 +40,7 @@ public class Ball : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
             inPlay = false;
+            gm.UpdateLives(-1);
         }
     }
     private void OnCollisionEnter2D(Collision2D other)
@@ -43,6 +48,8 @@ public class Ball : MonoBehaviour
         if (other.transform.CompareTag("Brick"))
         {
             Destroy(other.gameObject);
+
+            //gm.UpdateScore(other.gameObject.GetComponent<Brick>().points);
         }
     }
 }
