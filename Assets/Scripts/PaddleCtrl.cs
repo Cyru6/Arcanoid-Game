@@ -14,7 +14,7 @@ public class PaddleCtrl : MonoBehaviour
         {
             return;
         }
-        float horizontal = Input.GetAxis("Horizontal");
+        float horizontal = Input.GetAxis("Mouse X");
 
         transform.Translate(Vector2.right * horizontal * Time.deltaTime * speed);
         if(transform.position.x < leftScreenEdge)

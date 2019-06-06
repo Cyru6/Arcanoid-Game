@@ -131,3 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dffb5b19bbcfc4846a8d3a143485abae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  inPlay: 0
+  paddle: {fileID: 0}
+  speed: 1000
+  gm: {fileID: 0}

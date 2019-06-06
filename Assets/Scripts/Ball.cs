@@ -25,7 +25,7 @@ public class Ball : MonoBehaviour
         {
             transform.position = paddle.position;
         }
-        if (Input.GetButtonDown ("Jump") && !inPlay)
+        if (Input.GetMouseButtonDown(0) && !inPlay)
         {
             inPlay = true;
             rb.AddForce(Vector2.up * speed);
