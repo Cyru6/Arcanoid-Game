@@ -12,9 +12,7 @@ public class Ball : MonoBehaviour
 
     void Start()
     {
-        print("Hello");
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce (Vector2.up * 500);
     }
 
     void Update()
@@ -48,7 +46,7 @@ public class Ball : MonoBehaviour
         if (other.transform.CompareTag("Brick"))
         {
             Destroy(other.gameObject);
-
+            gm.UpdateNumberOfBricks();
             //gm.UpdateScore(other.gameObject.GetComponent<Brick>().points);
         }
     }

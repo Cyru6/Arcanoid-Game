@@ -12,18 +12,14 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public bool gameOver;
     public GameObject gameOverPanel;
-    // Start is called before the first frame update
+    public GameObject winPanel;
+    public int numberOfBricks;
+
     void Start()
     {
         livesText.text = "Lives: " + lives;
         scoreText.text = "Score " + score;
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        numberOfBricks = GameObject.FindGameObjectsWithTag ("Brick").Length;
     }
 
     public void UpdateLives(int changeInLives)
@@ -37,13 +33,41 @@ public class GameManager : MonoBehaviour
 
         livesText.text = "Lives: " + lives;
     }
+
     public void UpdateScore(int changeInScore)
     {
         score += changeInScore;
         scoreText.text = "Score: " + score;
     }
+
+    public void UpdateNumberOfBricks()
+    {
+        numberOfBricks--;
+        if (numberOfBricks<=0)
+        {
+            Win();
+            //if (currentLevelIndex >=levels.Length - 1)
+            //{
+              //  GameOver();
+            //}
+           // else
+           // {
+           //     loadLevelPanel.SetActive(true);
+            //    gameOver = true;
+          //      Invoke("LoadLevel", 3f);
+            //}
+        }
+    }
+
     void GameOver()
     {
         gameOver = true;
+        gameOverPanel.SetActive (true);
+    }
+
+    void Win()
+    {
+        gameOver = true;
+        winPanel.SetActive (true);
     }
 }

@@ -10,7 +10,6 @@ public class SceneTransition : MonoBehaviour
         Debug.Log("The scene loaded was : " + name);
         SceneManager.LoadScene(name);
     }
-
     public void QuitRequest()
     {
         Debug.Log("You quit the game");
